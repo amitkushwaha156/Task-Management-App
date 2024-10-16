@@ -109,11 +109,11 @@ router.get('/:id', async (req, res) => {
   
       // Fetch the tasks with pagination
       const tasks = await Task.find()
-        .sort({ createdAt: -1 }) // Optional: sort by createdAt descending
+        .sort({ createdAt: -1 }) 
         .skip(skip)
         .limit(limitNumber);
   
-      // Get the total count of tasks for total pages
+     
       const totalTasks = await Task.countDocuments();
   
       // Send response

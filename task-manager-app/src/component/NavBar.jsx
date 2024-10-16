@@ -19,11 +19,11 @@ const NavBar = () => {
             toast.error("Logout Successfully")
 
             dispatch(logout());
-            // Navigate to the login page
+      
             navigation('/login');
         } catch (error) {
             console.error('Logout failed:', error);
-            // Optionally handle errors here (e.g., show an alert)
+            
         }
     };
 
