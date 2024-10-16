@@ -28,8 +28,8 @@ const TaskList = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const fetchTasks = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/tasks`,
         {
@@ -174,6 +174,7 @@ const TaskList = () => {
             />
           </div>
         ) : (
+          <div className="relative overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded-lg text-center">
             <thead className="bg-gray-200">
               <tr>
@@ -231,14 +232,14 @@ const TaskList = () => {
                       className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mx-1"
                     >
                       <span className="flex items-center">
-                        <AiOutlineInfoCircle /> &nbsp;View{" "}
+                        <AiOutlineInfoCircle /> &nbsp;View
                       </span>
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         )}
 
         <div className="flex justify-between mt-4">
