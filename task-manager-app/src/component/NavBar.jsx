@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/UserSlice';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 const NavBar = () => {
     const navigation = useNavigate();
@@ -60,7 +61,10 @@ const NavBar = () => {
                                     onClick={handleLogout}
                                     className="text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium"
                                 >
-                                    Logout
+                                   <span className="flex items-center">
+                                   <AiOutlineLogout /> &nbsp;Logout
+                      </span>
+                                     
                                 </button>
                             </div>
                         </div>

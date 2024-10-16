@@ -175,71 +175,82 @@ const TaskList = () => {
           </div>
         ) : (
           <div className="relative overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded-lg text-center">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="px-4 py-2 border">SN</th>
-                <th className="px-4 py-2 border">Title</th>
-                <th className="px-4 py-2 border">Description</th>
-                <th className="px-4 py-2 border">Due Date</th>
-                <th className="px-4 py-2 border">Status</th>
-                <th className="px-4 py-2 border">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredTasks.map((task, index) => (
-                <tr key={task._id}>
-                  <td className="px-4 py-2 border">{index + 1}</td>
-                  <td className="px-4 py-2 border">{task.title}</td>
-                  <td className="px-4 py-2 border">{task.description}</td>
-                  <td className="px-4 py-2 border">
-                    {moment(task.dueDate).format("Do MMM YY")}
-                  </td>
-                  <td
-                    className={`px-4 py-2 border ${
-                      task.status === "Complete"
-                        ? "text-green-500 font-bold"
-                        : ""
-                    } ${
-                      task.status === "Pending" ? "text-red-500 font-bold" : ""
-                    } ${
-                      task.status === "In Progress"
-                        ? "text-yellow-500 font-bold"
-                        : ""
-                    }`}
-                  >
-                    {task.status}
-                  </td>
-                  <td className="px-4 py-2 border">
-                    <button
-                      onClick={() => openModal(task)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mx-1"
-                    >
-                      <span className="flex items-center">
-                        <AiFillEdit /> &nbsp;Edit{" "}
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => DeleteTask(task._id)}
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mx-1"
-                    >
-                      <span className="flex items-center">
-                        <AiFillDelete /> &nbsp;Delete{" "}
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => openViewModal(task)}
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mx-1"
-                    >
-                      <span className="flex items-center">
-                        <AiOutlineInfoCircle /> &nbsp;View
-                      </span>
-                    </button>
-                  </td>
+            <table className="min-w-full bg-white shadow-md rounded-lg text-center">
+              <thead className="bg-gray-200">
+                <tr>
+                  <th className="px-4 py-2 border">SN</th>
+                  <th className="px-4 py-2 border">Title</th>
+                  <th className="px-4 py-2 border">Description</th>
+                  <th className="px-4 py-2 border">Due Date</th>
+                  <th className="px-4 py-2 border">Status</th>
+                  <th className="px-4 py-2 border">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table></div>
+              </thead>
+              <tbody>
+                {filteredTasks.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="px-4 py-2 text-center border">
+                      No data
+                    </td>
+                  </tr>
+                ) : (
+                  filteredTasks.map((task, index) => (
+                    <tr key={task._id}>
+                      <td className="px-4 py-2 border">{index + 1}</td>
+                      <td className="px-4 py-2 border">{task.title}</td>
+                      <td className="px-4 py-2 border">{task.description}</td>
+                      <td className="px-4 py-2 border">
+                        {moment(task.dueDate).format("Do MMM YY")}
+                      </td>
+                      <td
+                        className={`px-4 py-2 border ${
+                          task.status === "Complete"
+                            ? "text-green-500 font-bold"
+                            : ""
+                        } ${
+                          task.status === "Pending"
+                            ? "text-red-500 font-bold"
+                            : ""
+                        } ${
+                          task.status === "In Progress"
+                            ? "text-yellow-500 font-bold"
+                            : ""
+                        }`}
+                      >
+                        {task.status}
+                      </td>
+                      <td className="px-4 py-2 border">
+                        <button
+                          onClick={() => openModal(task)}
+                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mx-1"
+                        >
+                          <span className="flex items-center">
+                            <AiFillEdit /> &nbsp;Edit
+                          </span>
+                        </button>
+                        <button
+                          onClick={() => DeleteTask(task._id)}
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mx-1"
+                        >
+                          <span className="flex items-center">
+                            <AiFillDelete /> &nbsp;Delete
+                          </span>
+                        </button>
+                        <button
+                          onClick={() => openViewModal(task)}
+                          className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mx-1"
+                        >
+                          <span className="flex items-center">
+                            <AiOutlineInfoCircle /> &nbsp;View
+                          </span>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         )}
 
         <div className="flex justify-between mt-4">
