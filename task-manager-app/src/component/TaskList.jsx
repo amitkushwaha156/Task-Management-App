@@ -98,6 +98,7 @@ const TaskList = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    fetchTasks();
     setCurrentTask(null); // Reset current task when modal closes
   };
 
@@ -109,12 +110,13 @@ const TaskList = () => {
   const openViewModal = (task) => {
     setCurrentTask(task);
     dispatchTask(setViewTask(task));
-
+    fetchTasks();
     setIsViewModalOpen(true);
   };
 
   const closeViewModal = () => {
     setIsViewModalOpen(false);
+    fetchTasks();
     setCurrentTask(null);
   };
 
@@ -194,7 +196,7 @@ const TaskList = () => {
               <tbody>
                 {filteredTasks.length === 0 ? (
                   <tr>
-                    <td colSpan="5" className="px-4 py-2 text-center border">
+                    <td colSpan="6" className="px-4 py-2 text-center border">
                       No data
                     </td>
                   </tr>
@@ -208,7 +210,7 @@ const TaskList = () => {
   ${task.status === "Pending" ? "border-r bg-red-50" : ""}
 `}
                     >
-                      <td className="px-4 py-2 border">{index + 1}</td>
+                      <td className="px-4 py-2 border">{(currentPage - 1) * limit + index + 1}</td>
                       <td className="px-4 py-2 border">{task.title}</td>
                       <td className="px-4 py-2 border">{task.description}</td>
                       <td className="px-4 py-2 border">
