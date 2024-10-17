@@ -40,7 +40,7 @@ const LoginPage = () => {
       // Handle error response
       if (error.response) {
         console.error("Login failed:", error.response.data);
-        toast.error(error.response.data.message); // Adjust the message based on your API response
+        toast.error(error.response.data.message); 
       } else {
         // Network error or request was not made
         console.error("Login error:", error.message);
