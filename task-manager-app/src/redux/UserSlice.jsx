@@ -31,7 +31,7 @@ export const userSlice = createSlice({
     },
     setViewTask:(state,action)=>{
       state.ViewTask = {...action.payload };
-      console.log("store",state.ViewTask)
+     // console.log("store",state.ViewTask)
 
     }
   },

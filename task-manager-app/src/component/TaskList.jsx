@@ -105,12 +105,11 @@ const TaskList = () => {
     fetchTasks(); // Fetch tasks again to update the list
   };
 
-
-  const dispatchTask=useDispatch()
+  const dispatchTask = useDispatch();
   const openViewModal = (task) => {
     setCurrentTask(task);
-    dispatchTask(setViewTask(task))
-   
+    dispatchTask(setViewTask(task));
+
     setIsViewModalOpen(true);
   };
 
@@ -201,7 +200,14 @@ const TaskList = () => {
                   </tr>
                 ) : (
                   filteredTasks.map((task, index) => (
-                    <tr key={task._id}>
+                    <tr
+                      key={task._id}
+                      className={`
+  ${task.status === "Complete" ? "border-r bg-green-50" : ""}
+  ${task.status === "In Progress" ? "border-r bg-yellow-50" : ""}
+  ${task.status === "Pending" ? "border-r bg-red-50" : ""}
+`}
+                    >
                       <td className="px-4 py-2 border">{index + 1}</td>
                       <td className="px-4 py-2 border">{task.title}</td>
                       <td className="px-4 py-2 border">{task.description}</td>
@@ -231,7 +237,8 @@ const TaskList = () => {
                           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mx-1"
                         >
                           <span className="flex items-center">
-                            <AiFillEdit /> &nbsp;Edit
+                            <AiFillEdit />
+                            <span className="hidden sm:inline">&nbsp;Edit</span>
                           </span>
                         </button>
                         <button
@@ -239,7 +246,10 @@ const TaskList = () => {
                           className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mx-1"
                         >
                           <span className="flex items-center">
-                            <AiFillDelete /> &nbsp;Delete
+                            <AiFillDelete />
+                            <span className="hidden sm:inline">
+                              &nbsp;Delete
+                            </span>
                           </span>
                         </button>
                         <button
@@ -247,7 +257,8 @@ const TaskList = () => {
                           className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded mx-1"
                         >
                           <span className="flex items-center">
-                            <AiOutlineInfoCircle /> &nbsp;View
+                            <AiOutlineInfoCircle />
+                            <span className="hidden sm:inline">&nbsp;View</span>
                           </span>
                         </button>
                       </td>

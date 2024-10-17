@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
   title: {
@@ -8,19 +8,18 @@ const TaskSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    
   },
   dueDate: {
-   type: Date,
+    type: Date,
     required: true,
   },
   status: {
     type: String,
-    enum: ['Pending', 'Complete', 'In Progress'],  
+    enum: ["Pending", "Complete", "In Progress"],
     required: true,
-    default: 'Pending', 
+    default: "Pending",
   },
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Task', TaskSchema);
+module.exports = mongoose.model("Task", TaskSchema);
