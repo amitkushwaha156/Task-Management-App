@@ -64,7 +64,7 @@ const RegisterPage = () => {
                 ref={NameEle}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
                 placeholder="Enter your name"
-                required=""
+                required
               />
             </div>
             <div className="mb-4">
@@ -77,7 +77,7 @@ const RegisterPage = () => {
                 ref={EmailEle}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
                 placeholder="Enter your email"
-                required=""
+                required
               />
             </div>
             <div className="mb-6">
@@ -90,7 +90,7 @@ const RegisterPage = () => {
                 ref={PassEle}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-200"
                 placeholder="Enter your password"
-                required=""
+                required
               />
             </div>
 

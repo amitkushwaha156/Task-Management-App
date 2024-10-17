@@ -13,6 +13,8 @@ import {
   AiOutlinePlus,
 } from "react-icons/ai";
 import NavBar from "./NavBar";
+import { useDispatch } from "react-redux";
+import { setViewTask } from "../redux/UserSlice";
 
 const TaskList = () => {
   const [loading, setLoading] = useState(false);
@@ -103,8 +105,12 @@ const TaskList = () => {
     fetchTasks(); // Fetch tasks again to update the list
   };
 
+
+  const dispatchTask=useDispatch()
   const openViewModal = (task) => {
     setCurrentTask(task);
+    dispatchTask(setViewTask(task))
+   
     setIsViewModalOpen(true);
   };
 
@@ -170,7 +176,7 @@ const TaskList = () => {
               mt="5"
               noOfLines={10}
               spacing="7"
-              skeletonHeight="2"
+              skeletonHeight="5"
             />
           </div>
         ) : (

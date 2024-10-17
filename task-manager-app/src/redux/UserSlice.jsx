@@ -5,11 +5,12 @@ const initialState = {
   _id:"",
   name: "",
   email: "",
+  ViewTask:{}
 };
 
 // Create the User slice
 export const userSlice = createSlice({
-  name: "user",
+  name: "userTask",
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -28,11 +29,16 @@ export const userSlice = createSlice({
    
        return { ...initialState }; // Reset to initial state
     },
+    setViewTask:(state,action)=>{
+      state.ViewTask = {...action.payload };
+      console.log("store",state.ViewTask)
+
+    }
   },
 });
 
 // Action creators generated for each reducer function
-export const { setUser,logout } = userSlice.actions;
+export const { setUser,logout,setViewTask } = userSlice.actions;
 
 // The reducer to be used in store configuration
 export default userSlice.reducer;

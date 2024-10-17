@@ -9,7 +9,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 const NavBar = () => {
     const navigation = useNavigate();
     const dispatch = useDispatch();
-    const User=useSelector((state)=>state?.user)
+    const User=useSelector((state)=>state?.userTask)
 
     useEffect(() => {
         if (User && User.name) {

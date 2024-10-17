@@ -3,7 +3,7 @@ import UserSlices from './UserSlice';
 
 export const store = configureStore({
   reducer: {
-    user: UserSlices, // No need for .reducer here
+    userTask: UserSlices, // No need for .reducer here
     
   },
 });
